@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<div class="container mt-5 d-flex gap-2" style="width:70%; margin:auto">
+
+		{% if computers.images is empty %}
+			<img src="{{ asset('computer_imgs/default.png') }}">
+		{% else %}
+
+			{% set i = 0 %}
+			{% for image in computers.images %}
+				{% set i = i + 1 %}
+				<div class="card border-light mb-3 shadow" style="max-width: 18rem;">
+					<div class="card-header">Image
+						{{ i }}</div>
+					<div class="card-body">
+						<img style="max-width:200px" src="{{ asset('computer_imgs/' ~ image ) }}">
+					</div>
+				</div>
+			{% endfor %}
+
+		{% endif %}
+	</div>
+{% endblock %}

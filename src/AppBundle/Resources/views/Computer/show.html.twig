@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Liste des Ordinateurs
+{% endblock %}
+
+{% block body %}
+
+	<div class="mt-5" style="max-width:75%; margin: auto">
+
+		<a href="{{ path('departement_show') }}" class="link-info">Accueil</a>
+
+		<h3 class="my-3">Liste des Ordinateurs</h3>
+
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">Modèle</th>
+					<th scope="col">Systême</th>
+					<th scope="col">Date</th>
+					<th scope="col">Adresse Mac</th>
+					<th scope="col">Departement</th>
+					<th>Images</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				{% for computer in computers  %}
+					<tr class="table-dark">
+						<td>{{ computer.model }}</td>
+						<td>{{ computer.system }}</td>
+						<td>{{ computer.purchase | date('d-m-Y')}}</td>
+						<td>{{ computer.macAdresse }}</td>
+						<td>{{ computer.nameDepartement.domaine }}</td>
+						<td>
+							<a class="link-success" href="{{ path('computer_show_img', {id:computer.id }) }}">Voir les images ({{ computer.images|length }})
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+				{% if computers is empty %}
+					<p class="opacity-75 text-danger">Aucun ordinateurs enregistrés...</p>
+				{% endif %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}

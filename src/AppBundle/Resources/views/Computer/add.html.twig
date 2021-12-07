@@ -1,0 +1,62 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ajouter un ordinateur
+{% endblock %}
+
+{% block body %}
+
+	<div class="mt-5" style="max-width:50%; margin: auto">
+
+		<a href="{{ path('departement_add') }}" class="link-info me-3">Accueil</a>
+		<a href="{{ path('computer_show') }}" class="link-info">Liste ordinateurs</a>
+		<h3 class="my-3">Ajouter un ordinateur au département:
+			<span class="text-danger">{{ domain }}</span>
+
+		</h3>
+
+		<div class="form-group">
+			{{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+
+			{# COMPUTER MODEL #}
+			{{ form_widget(form.model, {
+                'attr':{'class':'form-control', 'placeholder': 'Nom du modèle'}
+            }) }}
+			<div class="text-danger" style="height:28px">
+				<small>{{ form_errors(form.model) }}</small>
+			</div>
+
+			{# COMPUTER SYSTEME #}
+			{{ form_widget(form.system, {
+                'attr':{'class':'form-select', 'placeholder': 'Nom du système'}
+            }) }}
+			<div class="text-danger" style="height:28px">
+				<small>{{ form_errors(form.system) }}</small>
+			</div>
+
+			{# COMPUTER PURCHASE #}
+			{{ form_widget(form.purchase, {
+                'attr':{'class':'form-control'}
+            }) }}
+			<div class="text-danger" style="height:28px">
+				<small>{{ form_errors(form.purchase) }}</small>
+			</div>
+
+			{# COMPUTER MAC ADRESS #}
+			{{ form_widget(form.macAdresse, {
+                'attr':{'class':'form-control', 'placeholder': 'Nom de mac adresse'}
+            }) }}
+			<div class="text-danger" style="height:28px">
+				<small>{{ form_errors(form.macAdresse) }}</small>
+			</div>
+
+			{# COMPUTER FILES #}
+			{{ form_widget(form.images, {
+                'attr':{'class':'form-control mb-2'}
+            }) }}
+
+			{{ form_widget(form.submit, {'label':'Ajouter', 'attr':{'class':'btn btn-danger mt-2'}}) }}
+
+			{{ form_end(form) }}
+		</div>
+	</div>
+{% endblock %}

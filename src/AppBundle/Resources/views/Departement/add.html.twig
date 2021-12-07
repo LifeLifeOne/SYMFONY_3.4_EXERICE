@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ajouter un departement
+{% endblock %}
+
+{% block body %}
+
+	<div class="mt-5" style="max-width:50%; margin: auto">
+
+		<a href="{{ path('departement_show') }}" class="link-info">Liste Départements</a>
+		<h3 class="my-3">Ajouter un departement</h3>
+
+		<div class="form-group">
+			{{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+
+			{# DEPARTEMENT NAME #}
+			{{ form_widget(form.name, {
+                'attr':{'class':'form-control', 'placeholder': 'Nom du département'}
+            }) }}
+			<div class="text-danger" style="height:28px">
+				<small>{{ form_errors(form.name) }}</small>
+			</div>
+
+
+			{# DEPARTEMENT DOMAIN #}
+			{{ form_widget(form.domaine, {
+                'attr':{'class':'form-select', 'placeholder': 'Nom du domaine'}
+            }) }}
+			<div class="text-danger" style="height:28px">
+				<small>{{ form_errors(form.domaine) }}</small>
+			</div>
+
+
+			{{ form_widget(form.submit, {'label':'Ajouter', 'attr':{'class':'btn btn-danger'}}) }}
+
+			{{ form_end(form) }}
+		</div>
+	</div>
+
+{% endblock %}

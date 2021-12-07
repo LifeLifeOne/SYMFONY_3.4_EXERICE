@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste Départements{% endblock %}
+
+{% block body %}
+
+    <div class="mt-5" style="max-width:60%; margin: auto">
+
+        {% for message in app.flashes('info') %}
+            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+
+        <a href="{{ path('departement_add') }}" class="link-info">Retour</a>
+        <h3 class="my-3">Liste des départements</h3>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Ordinateur</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Domaine</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            {% for dep in departements  %}
+                <tr class="table-dark">
+                    <td><a href="{{ path('computer_add', {id:dep.id}) }}"><span class="badge bg-success">Ajouter un ordinateur</span></a></td>
+                    <td>{{ dep.id }}</td>
+                    <td>{{ dep.name|upper }}</td>
+                    <td>{{ dep.domaine }}</td>
+                    <td>
+                        <a href="{{ path('departement_update', {id:dep.id}) }}"><span class="badge bg-warning w-100">Modifier</span></a>
+                        <a href="{{ path('departement_delete', {id:dep.id}) }}"><span class="badge bg-danger w-100">Supprimer</span></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            {% if departements is empty %}
+                <p class="opacity-75 text-danger">Aucun départements enregistrés...</p>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

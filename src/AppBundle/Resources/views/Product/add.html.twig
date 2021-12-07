@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Ajouter un article
+{% endblock %}
+
+{% block body %}
+
+	<div style="max-width:60%;margin:3rem auto">
+
+		<h3 class="mb-3">Ajouter un article</h3>
+
+		{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}
+		) }}
+
+		{# NAME #}
+		{{ form_widget(form.name, {'attr':{'class':'form-control'}}) }}
+		<div class="text-danger" style="height:28px">
+			<small>{{ form_errors(form.name) }}</small>
+		</div>
+
+		{# QUANTITY #}
+		{{ form_widget(form.quantity, {'attr': 
+		{'class': 'form-control', 'min': 1, 'value': 1}
+		}) }}
+		<div class="text-danger" style="height:28px">
+			<small>{{ form_errors(form.quantity) }}</small>
+		</div>
+
+		{# DESCRIPTION #}
+		{{ form_widget(form.description, {'attr':{'class':'form-control'}}) }}
+		<div class="text-danger" style="height:28px">
+			<small>{{ form_errors(form.description) }}</small>
+		</div>
+
+		{# EMAIL #}
+		{{ form_widget(form.email, {'attr':{'class':'form-control'}}) }}
+		<div class="text-danger" style="height:28px">
+			<small>{{ form_errors(form.email) }}</small>
+		</div>
+
+		{{ form_end(form) }}
+
+	</div>
+
+
+{% endblock %}
