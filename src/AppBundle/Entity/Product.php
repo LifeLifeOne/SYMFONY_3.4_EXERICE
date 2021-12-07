@@ -58,7 +58,6 @@ class Product
      */
     private $email;
 
-
     /**
      * Get id
      *
